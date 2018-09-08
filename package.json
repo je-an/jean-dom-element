@@ -1,0 +1,21 @@
+{
+  "name": "jean-dom-element",
+  "version": "0.0.0",
+  "description": "Provides functionality for a basic html dom element",
+  "main": "dist/jean-dom-element.js",
+  "scripts": {
+    "test": "open spec/spec-runner.html in browser"
+  },
+  "keywords": [],
+  "author": "Jeremias Andris",
+  "license": "MIT",
+  "dependencies": {
+    "jean-amd": "1.0.1",
+    "jean-failure": "^1.0.1",
+    "jean-type-check": "^1.0.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/je-an/jean-dom-element.git"
+  }
+}
