@@ -5,18 +5,38 @@ define([
 ], function (DomElement) {
     describe('DomElement.spec.js', function () {
         var instance;
-        beforeEach(function () {
-            instance = new DomElement();
-        });
         describe("DomElement", function () {
-            it("TODO: Check if all members are available | EXPECTATION: DomElement has all necessary members", function () {
-                var numberOfMembers = 0;
-                expect(Object.keys(instance).length).toEqual(numberOfMembers);
+            it("creates an instance", function () {
+                var e = new DomElement({ html: "<div></div>" });
+                expect(e).not.toBeUndefined();
+                expect(e.element).not.toBeUndefined();
+                expect(e.element instanceof HTMLElement).toBe(true);
             });
-            it("TODO: Check if all methods are available | EXPECTATION: DomElement has all necessary methods", function () {
-                var numberOfMethods = 0;
-                var methodCount = Object.keys(Object.getPrototypeOf(instance)).length;
-                expect(methodCount).toEqual(numberOfMethods);
+            it("throws an error if no options is provided to constructor", function () {
+                try {
+                    var e = new DomElement();
+                } catch (e) {
+                    expect(e instanceof TypeError).toBe(true);
+                }
+            });
+            it("throws an error if no html markup is provided to constructor", function () {
+                try {
+                    var e = new DomElement({});
+                } catch (e) {
+                    expect(e instanceof TypeError).toBe(true);
+                }
+            });
+        });
+        describe("DomElement.prototype.attachToDom", function () {
+            it("attachs the element to the DOM", function () {
+                var e = new DomElement({ html: "<div></div>" });
+                expect(e.attachToDom()).toBe(true);
+            });
+        });
+        describe("DomElement.prototype.detachFromDom", function () {
+            it("detachs the element from the DOM", function () {
+                var e = new DomElement({ html: "<div></div>" });
+                expect(e.detachFromDom()).toBe(true);
             });
         });
     });

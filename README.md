@@ -1,6 +1,6 @@
 ## Description
 
-Abstract class for all control with native dom elements within jean environment 
+Abstract class for all controls with native dom elements within jean environment 
 
 ## Support
 Supports AMD eco system. If there is no loader, DomElement is registered as a browser variable.
@@ -44,19 +44,6 @@ require(["path/to/DomElement"], function(DomElement){
 
 **Options**
 - **html**: `String` - `mandatory` - html markup of this element
-
-### DomElement.createElementFromMarkup(html) 
-
-**Parameters**
-- **html**: `String` - the html markup
-
-**Returns**
-- `Element` - the created DOM element
-
-### DomElement.isInViewPort() 
-
-**Returns**
-- `Boolean` - true if element is within the viewport, false otherwise
 
 ### DomElement.attachToDom() 
 

@@ -1,9 +1,11 @@
 define([
     "TypeCheck",
-    "Failure"
+    "Failure",
+    "DomUtil"
 ], function (
     TypeCheck,
-    Failure
+    Failure,
+    DomUtil
 ) {
         /**
          * Abstract class for all control with native dom elements 
@@ -18,28 +20,8 @@ define([
          */
         var DomElement = function (options) {
             this.options = TypeCheck.isDefined(options) ? options : Failure.throwTypeError("options is undefined");
-            this.element = TypeCheck.isString(options.html) ? this.createElementFromMarkup(options.html) : Failure.throwTypeError("options.html is not a string");
+            this.element = TypeCheck.isString(options.html) ? DomUtil.createElementFromMarkup(options.html) : Failure.throwTypeError("options.html is not a string");
         };
-        /**
-         * @throws {TypeError} - if html is not a string
-         * @param {String} html - the html markup 
-         * @returns {Element} - the created DOM element
-         */
-        DomElement.prototype.createElementFromMarkup = function (html) {
-            if (!TypeCheck.isString(html)) {
-                Failure.throwTypeError("html is not a string");
-            }
-            var div = document.createElement('div');
-            div.innerHTML = html.trim();
-            return div.firstChild;
-        };
-        /**
-         * @returns {Boolean} - True if element is within the viewport, false otherwise
-         */
-        DomElement.prototype.isInViewPort = function () {
-            var element = this.element, bounds = this.element.getBoundingClientRect();
-            return ((bounds.top + bounds.height) > 0) && bounds.top < window.innerHeight;
-        }
         /** @returns {Boolean} - True if element is attached to DOM */
         DomElement.prototype.attachToDom = function () {
             this.element.style.display = "block";
@@ -50,6 +32,5 @@ define([
             this.element.style.display = "none";
             return true;
         };
-
         return DomElement;
     });
