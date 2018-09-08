@@ -236,17 +236,22 @@ define('src/DomElement',[
     Failure
 ) {
         /**
-         * Provides functionality for a basic html dom element 
+         * Abstract class for all control with native dom elements 
+         * within jean environment 
          * @alias DomElement 
+         * @abstract
          * @constructor
+         * @throws {TypeError} - if options are undefined
+         * @throws {TypeError} - if options.html is not a string
          * @param {Object} options - options object
-         * @param {String} options.html - html markup of this control
+         * @param {String} options.html - html markup of this element
          */
         var DomElement = function (options) {
             this.options = TypeCheck.isDefined(options) ? options : Failure.throwTypeError("options is undefined");
             this.element = TypeCheck.isString(options.html) ? this.createElementFromMarkup(options.html) : Failure.throwTypeError("options.html is not a string");
         };
         /**
+         * @throws {TypeError} - if html is not a string
          * @param {String} html - the html markup 
          * @returns {Element} - the created DOM element
          */
