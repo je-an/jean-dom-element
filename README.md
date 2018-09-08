@@ -8,7 +8,25 @@ Supports AMD eco system. If there is no loader, DomElement is registered as a br
 ## Code Example
 - Use it as browser variable
 ```js
-var obj = new DomElement();
+var ExampleControl = function(options){
+    // the default options for this control
+    // if a specific option is not user defined, the value
+    // from defaultOptions will be used.
+    var defaultOptions = {
+        html: "<div id=''>Example</div>"
+    };
+    // Inherit constructor from DomElement
+    DomElement.apply(this, [options, defaultOptions]);
+    // Now there are this.options, this.element available for ExampleControl. Within options there are the merged options from options and default options. 
+};
+// Inherit prototype methods from Control
+ExampleControl.prototype = Object.create(DomElement.prototype);
+ExampleControl.prototype.constructor = ExampleControl;
+
+// Initialise the control
+var eC = new ExampleControl();
+// Add the control to the document
+document.body.appendChild(ec.element);
 ```
 - Use it with require.js
 ```js
