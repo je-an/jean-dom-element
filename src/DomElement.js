@@ -1,11 +1,13 @@
 define([
     "TypeCheck",
     "Failure",
-    "DomUtil"
+    "DomUtil",
+    "Interface"
 ], function (
     TypeCheck,
     Failure,
-    DomUtil
+    DomUtil,
+    Interface
 ) {
         /**
          * Abstract class for all control with native dom elements 
@@ -21,6 +23,7 @@ define([
         var DomElement = function (options) {
             this.options = TypeCheck.isDefined(options) ? options : Failure.throwTypeError("options is undefined");
             this.element = TypeCheck.isString(options.html) ? DomUtil.createElementFromMarkup(options.html) : Failure.throwTypeError("options.html is not a string");
+            Interface.areMethodsImplemented(["set", "get", "clear", "isDataValid", "lock", "unlock"], this);
         };
         /** @returns {Boolean} - True if element is attached to DOM */
         DomElement.prototype.attachToDom = function () {

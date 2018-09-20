@@ -21,6 +21,7 @@
     paths: {
         TypeCheck: "node_modules/jean-type-check/src/TypeCheck",
         Failure: "node_modules/jean-failure/src/Failure",
-        DomUtil: "node_modules/jean-dom-util/dist/jean-dom-util"
+        DomUtil: "node_modules/jean-dom-util/dist/jean-dom-util",
+        Interface: "node_modules/jean-interface/dist/jean-interface"
     }
 })

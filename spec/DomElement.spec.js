@@ -1,27 +1,38 @@
 // jscs:disable
 // jshint ignore:start
 define([
-    "DomElement"
-], function (DomElement) {
+    "DomElement",
+    "TestControl",
+    "NotImplementedError"
+], function (DomElement, TestControl, NotImplementedError) {
     describe('DomElement.spec.js', function () {
-        var instance;
         describe("DomElement", function () {
             it("creates an instance", function () {
-                var e = new DomElement({ html: "<div></div>" });
+                var e = new TestControl({ html: "<div></div>" });
                 expect(e).not.toBeUndefined();
                 expect(e.element).not.toBeUndefined();
                 expect(e.element instanceof HTMLElement).toBe(true);
             });
+            it("throws not implemented error, if there the standard DomElement methods are not part of the prototype", function () {
+                function A() { DomElement.call(this, { html: "<div></div>" }) };
+                A.prototype = Object.create(DomElement.prototype);
+                A.prototype.constructor = A;
+                try {
+                    var e = new A();
+                } catch (e) {
+                    expect(e instanceof NotImplementedError).toBe(true);
+                }
+            });
             it("throws an error if no options is provided to constructor", function () {
                 try {
-                    var e = new DomElement();
+                    var e = new TestControl();
                 } catch (e) {
                     expect(e instanceof TypeError).toBe(true);
                 }
             });
             it("throws an error if no html markup is provided to constructor", function () {
                 try {
-                    var e = new DomElement({});
+                    var e = new TestControl({});
                 } catch (e) {
                     expect(e instanceof TypeError).toBe(true);
                 }
@@ -29,13 +40,13 @@ define([
         });
         describe("DomElement.prototype.attachToDom", function () {
             it("attachs the element to the DOM", function () {
-                var e = new DomElement({ html: "<div></div>" });
+                var e = new TestControl({ html: "<div></div>" });
                 expect(e.attachToDom()).toBe(true);
             });
         });
         describe("DomElement.prototype.detachFromDom", function () {
             it("detachs the element from the DOM", function () {
-                var e = new DomElement({ html: "<div></div>" });
+                var e = new TestControl({ html: "<div></div>" });
                 expect(e.detachFromDom()).toBe(true);
             });
         });

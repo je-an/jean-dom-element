@@ -13,6 +13,7 @@
     "jean-amd": "1.0.1",
     "jean-dom-util": "^1.0.0",
     "jean-failure": "^1.0.1",
+    "jean-interface": "^1.0.3",
     "jean-type-check": "^1.0.6"
   },
   "repository": {
