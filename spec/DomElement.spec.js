@@ -13,16 +13,6 @@ define([
                 expect(e.element).not.toBeUndefined();
                 expect(e.element instanceof HTMLElement).toBe(true);
             });
-            it("throws not implemented error, if there the standard DomElement methods are not part of the prototype", function () {
-                function A() { DomElement.call(this, { html: "<div></div>" }) };
-                A.prototype = Object.create(DomElement.prototype);
-                A.prototype.constructor = A;
-                try {
-                    var e = new A();
-                } catch (e) {
-                    expect(e instanceof NotImplementedError).toBe(true);
-                }
-            });
             it("throws an error if no options is provided to constructor", function () {
                 try {
                     var e = new TestControl();
