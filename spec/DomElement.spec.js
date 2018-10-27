@@ -2,9 +2,8 @@
 // jshint ignore:start
 define([
     "DomElement",
-    "TestControl",
-    "NotImplementedError"
-], function (DomElement, TestControl, NotImplementedError) {
+    "TestControl"
+], function (DomElement, TestControl) {
     describe('DomElement.spec.js', function () {
         describe("DomElement", function () {
             it("creates an instance", function () {
