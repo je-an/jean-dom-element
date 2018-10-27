@@ -1,13 +1,11 @@
 define([
     "TypeCheck",
     "Failure",
-    "DomUtil",
-    "Interface"
+    "DomUtil"
 ], function (
     TypeCheck,
     Failure,
-    DomUtil,
-    Interface
+    DomUtil
 ) {
         /**
          * Abstract class for all control with native dom elements 
