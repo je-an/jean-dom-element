@@ -16,9 +16,11 @@ define([
          * @throws {TypeError} - if options are undefined
          * @throws {TypeError} - if options.html is not a string
          * @param {Object} options - options object
+         * @param {String} options.id - id of the dom element
          * @param {String} options.html - html markup of this element
          */
         var DomElement = function (options) {
+            this.id = TypeCheck.isString(options.id) ? options.id : "",
             this.options = TypeCheck.isDefined(options) ? options : Failure.throwTypeError("options is undefined");
             this.element = TypeCheck.isString(options.html) ? DomUtil.createElementFromMarkup(options.html) : Failure.throwTypeError("options.html is not a string");
         };

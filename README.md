@@ -30,6 +30,7 @@ require(["path/to/DomElement"], function(DomElement){
 ### DomElement Constructor
 
 **Options**
+- **id**: `String` - `optional` - id of this element
 - **html**: `String` - `mandatory` - html markup of this element
 
 ### DomElement.attachToDom() 
